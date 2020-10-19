@@ -3,7 +3,8 @@ package lesson2.music.players;
 import lesson2.music.drives.Drive;
 
 abstract class MusicPlayer {
-    protected String playerName;5
+    protected String playerName;
+    protected String FuckYou;
     protected String playerType;
     protected Drive playerDrive;
 
