@@ -1,4 +1,6 @@
-package Lesson2;
+package lesson2.music.players;
+
+import lesson2.music.players.MusicPlayer;
 
 public class MusicStation {
     private final MusicPlayer musicPlayer;
@@ -15,6 +17,11 @@ public class MusicStation {
 
         public Builder songsPlayed(int songsPlayed) {
             this.songsPlayed = songsPlayed;
+            return this;
+        }
+
+        public MusicStation build() {
+            return new MusicStation(this);
         }
     }
 
@@ -23,7 +30,11 @@ public class MusicStation {
         songsPlayed = builder.songsPlayed;
     }
 
-    public static void main(String[] args) {
-//        var mS = new MusicStation().Builder()
-    }
+//    public static void main(String[] args) {
+//        var cdPlayer = new CdPlayer("Myboy1");
+//        var mS = new MusicStation
+//                .Builder(cdPlayer)
+//                .songsPlayed(4)
+//                .build();
+//    }
 }

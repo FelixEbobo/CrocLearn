@@ -1,2 +1,61 @@
-package lesson2.music.players;public class CdPlayer {
+package lesson2.music.players;
+
+import lesson2.music.drives.Drive;
+
+public class CdPlayer extends MusicPlayer {
+
+    public CdPlayer(String playerName) {
+        this.playerName = playerName;
+        this.playerType = "cd";
+        this.playerDrive = null;
+    }
+
+    @Override
+    public void playEachSong() {
+        if (this.playerDrive != null) {
+            for (int i = 1; i < this.playerDrive.playlistLength + 1; i++) {
+                this.playSong(i);
+            }
+        }
+        else {
+            System.out.println("You hasn't install drive!");
+        }
+    }
+
+    @Override
+    public void playSong(int index) {
+        try {
+            if (this.playerDrive != null) {
+                System.out.println("NOW PLAYING:\n" + playerDrive.getSong(index - 1));
+            }
+            else {
+                System.out.println("You hasn't install drive!");
+            }
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("There is no song with this index!");
+        }
+    }
+
+    @Override
+    public void setPlayerDrive(Drive drive) {
+        if (drive.getDriveType().equals(this.playerType)) {
+            this.playerDrive = drive;
+            System.out.printf("The player's drive now set to %s\n", drive.getDriveName());
+        }
+        else {
+            System.out.println("This drive type doesn't match with player type!");
+        }
+    }
+
+    @Override
+    public void ejectPlayerDrive() {
+        System.out.println("You ejected " + this.playerDrive.getDriveName());
+        this.playerDrive = null;
+    }
+
+    @Override
+    public String getPlayerName() {
+        return this.playerName;
+    }
 }
