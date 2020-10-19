@@ -4,7 +4,7 @@ import lesson2.music.drives.Drive;
 
 abstract class MusicPlayer {
     protected String playerName;
-    protected String playerType;
+    protected String[] playerType;
     protected Drive playerDrive;
 
 
@@ -17,4 +17,6 @@ abstract class MusicPlayer {
     public abstract void ejectPlayerDrive();
 
     public abstract String getPlayerName();
+
+    protected abstract boolean checkComplactability(Drive drive);
 }

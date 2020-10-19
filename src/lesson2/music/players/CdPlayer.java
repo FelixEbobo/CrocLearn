@@ -6,7 +6,7 @@ public class CdPlayer extends MusicPlayer {
 
     public CdPlayer(String playerName) {
         this.playerName = playerName;
-        this.playerType = "cd";
+        this.playerType = new String[]{"cd"};
         this.playerDrive = null;
     }
 
@@ -39,7 +39,11 @@ public class CdPlayer extends MusicPlayer {
 
     @Override
     public void setPlayerDrive(Drive drive) {
-        if (drive.getDriveType().equals(this.playerType)) {
+        if (this.playerDrive != null) {
+            this.ejectPlayerDrive();
+        }
+        this.ejectPlayerDrive();
+        if (checkComplactability(drive)) {
             this.playerDrive = drive;
             System.out.printf("The player's drive now set to %s\n", drive.getDriveName());
         }
@@ -57,5 +61,15 @@ public class CdPlayer extends MusicPlayer {
     @Override
     public String getPlayerName() {
         return this.playerName;
+    }
+
+    @Override
+    protected boolean checkComplactability(Drive drive) {
+        for (String type: this.playerType) {
+            if (drive.getDriveType().equals(type)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
