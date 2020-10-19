@@ -4,7 +4,6 @@ import lesson2.music.drives.Drive;
 
 abstract class MusicPlayer {
     protected String playerName;
-    protected String FuckYou;
     protected String playerType;
     protected Drive playerDrive;
 
