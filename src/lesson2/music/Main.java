@@ -21,6 +21,7 @@ public class Main {
 
         var cdPlayerOne = new CdPlayer("myCdPlayerOne");
         var digitalPlayerOne = new DigitalPlayer("myDigPlayerOne");
+        cdPlayerOne.setPlayerDrive(usbFlashOne);
 
         var allInOnePlayer = new MusicStation.Builder("MultiPultiThing")
                 .canPlayCd()

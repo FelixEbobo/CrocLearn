@@ -11,6 +11,10 @@ public class Song {
         this.songName = songName;
     }
 
+    /**
+     * Method to get information about song
+     * @return String with information about song
+     */
     public String getSong() {
         return String.format("\"%s\" by %s (%s)", this.songName, this.artistName, this.albumName);
     }

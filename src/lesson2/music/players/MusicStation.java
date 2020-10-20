@@ -13,35 +13,65 @@ public class MusicStation extends MusicPlayer{
         private Drive playerDrive = null;
         private String[] playerType = new String[]{"null", "null", "null"};
 
+        /**
+         * Uses design pattern to build a custom MusicPlayer with a custom properties
+         * @param playerName pass a name that you want your MusicPlayer be
+         */
         public Builder(String playerName) {
             this.playerName = playerName;
         }
 
+        /**
+         * Set a number of songs played
+         * @param songsPlayed pass number of songs that already has played on Player
+         * @return Object with set parameter
+         */
         public Builder songsPlayed(int songsPlayed) {
             this.songsPlayed = songsPlayed;
             return this;
         }
 
+        /**
+         * Set a drive to a Player
+         * @param drive pass a drive
+         * @return Object with set parameter
+         */
         public Builder playerDrive(Drive drive) {
             this.playerDrive = drive;
             return this;
         }
 
+        /**
+         * Set an ability to play music from CD Drives
+         * @return Object with set parameter
+         */
         public Builder canPlayCd() {
             this.playerType[0] = "cd";
             return this;
         }
 
+        /**
+         * Set an ability to play music from USB Drives
+         * @return Object with set parameter
+         */
         public Builder canPlayUsb() {
             this.playerType[1] = "usb";
             return this;
         }
 
+        /**
+         * Set an ability to play music from Phonogram Records
+         * @return Object with set parameter
+         */
         public Builder canPlayVinyl() {
             this.playerType[2] = "vinyl";
             return this;
         }
 
+        /**
+         * Builds MusicStation object
+         * @return MusicStation object with custom fields
+         */
         public MusicStation build() {
             return new MusicStation(this);
         }
@@ -54,6 +84,9 @@ public class MusicStation extends MusicPlayer{
         this.songsPlayed = builder.songsPlayed;
     }
 
+    /**
+     * Plays every single song recorded on a drive
+     */
     @Override
     public void playEachSong() {
         if (this.playerDrive != null) {
@@ -66,6 +99,10 @@ public class MusicStation extends MusicPlayer{
         }
     }
 
+    /**
+     * Play a song with a specific no. (start with 1)
+     * @param index no. of song in playlist
+     */
     @Override
     public void playSong(int index) {
         try {
@@ -82,6 +119,10 @@ public class MusicStation extends MusicPlayer{
         }
     }
 
+    /**
+     * Sets a drive with recorded songs
+     * @param drive drive that you want to install
+     */
     @Override
     public void setPlayerDrive(Drive drive) {
         if (this.playerDrive != null) {
@@ -96,6 +137,9 @@ public class MusicStation extends MusicPlayer{
         }
     }
 
+    /**
+     * Ejects a drive
+     */
     @Override
     public void ejectPlayerDrive() {
         System.out.println("You ejected " + this.playerDrive.getDriveName());
@@ -117,6 +161,9 @@ public class MusicStation extends MusicPlayer{
         return false;
     }
 
+    /**
+     * Shows a number of song that player played
+     */
     public void showSongsPlayed() {
         System.out.printf("This player played %d songs\n", this.songsPlayed);
     }
