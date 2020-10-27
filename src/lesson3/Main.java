@@ -15,6 +15,14 @@ public class Main {
         boolean relativeOrNot = false;
         String filePath;
         // Parsing first argument: is path relative?
+
+        try {
+            filePath = args[1];
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            throw new IllegalArgumentException("Не задан путь к файлу!");
+        }
+
         try {
             if (args[0].equalsIgnoreCase("true") || args[0].equalsIgnoreCase("false")) {
                 relativeOrNot = Boolean.parseBoolean(args[0]);
@@ -28,11 +36,9 @@ public class Main {
         }
 
         var relativePath = new File("").getAbsolutePath() + "/CrocLearn/";
+
         if (relativeOrNot) {
             filePath = relativePath + args[1];
-        }
-        else {
-            filePath = args[1];
         }
 
         try {
